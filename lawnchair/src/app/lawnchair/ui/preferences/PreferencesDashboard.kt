@@ -13,14 +13,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.DropdownMenuItem
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Build
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.rounded.TipsAndUpdates
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.material3.Surface
-import androidx.compose.material3.MaterialTheme as Material3Theme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -44,6 +43,7 @@ import app.lawnchair.util.isDefaultLauncher
 import app.lawnchair.util.restartLauncher
 import com.android.launcher3.BuildConfig
 import com.android.launcher3.R
+import androidx.compose.material3.MaterialTheme as Material3Theme
 
 @Composable
 fun PreferencesDashboard() {
@@ -156,12 +156,12 @@ fun PreferencesOverflowMenu() {
         }) {
             Text(text = stringResource(id = R.string.debug_restart_launcher))
         }
-        DropdownMenuItem(onClick = {
+        /*DropdownMenuItem(onClick = {
             navController.navigate(experimentalFeaturesRoute)
             hideMenu()
         }) {
             Text(text = stringResource(id = R.string.experimental_features_label))
-        }
+        }*/
         PreferenceDivider(modifier = Modifier.padding(vertical = 8.dp))
         DropdownMenuItem(onClick = {
             navController.navigate("/${Routes.CREATE_BACKUP}/")

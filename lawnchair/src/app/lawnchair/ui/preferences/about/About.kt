@@ -167,31 +167,32 @@ private val supportAndPr = listOf(
 )
 
 private val links = listOf(
-    Link(
-        iconResId = R.drawable.ic_new_releases,
-        labelResId = R.string.news,
-        url = "https://t.me/lawnchairci",
-    ),
-    Link(
-        iconResId = R.drawable.ic_help,
-        labelResId = R.string.support,
-        url = "https://t.me/lccommunity",
-    ),
-    Link(
-        iconResId = R.drawable.ic_twitter,
-        labelResId = R.string.twitter,
-        url = "https://twitter.com/lawnchairapp",
-    ),
+
+//    Link(
+//        iconResId = R.drawable.ic_new_releases,
+//        labelResId = R.string.news,
+//        url = "https://t.me/lawnchairci",
+//    ),
+//    Link(
+//        iconResId = R.drawable.ic_help,
+//        labelResId = R.string.support,
+//        url = "https://t.me/lccommunity",
+//    ),
+//    Link(
+//        iconResId = R.drawable.ic_twitter,
+//        labelResId = R.string.twitter,
+//        url = "https://twitter.com/lawnchairapp",
+//    ),
     Link(
         iconResId = R.drawable.ic_github,
         labelResId = R.string.github,
         url = "https://github.com/LawnchairLauncher/Lawnchair",
     ),
-    Link(
-        iconResId = R.drawable.ic_discord,
-        labelResId = R.string.discord,
-        url = "https://discord.com/invite/3x8qNWxgGZ",
-    ),
+//    Link(
+//        iconResId = R.drawable.ic_discord,
+//        labelResId = R.string.discord,
+//        url = "https://discord.com/invite/3x8qNWxgGZ",
+//    ),
 )
 
 object AboutRoutes {
@@ -218,7 +219,7 @@ fun About() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_home_comp),
+                painter = painterResource(id = R.drawable.plugin_icon_1),
                 contentDescription = null,
                 modifier = Modifier
                     .size(72.dp)
@@ -256,6 +257,13 @@ fun About() {
                     )
                 }
             }
+        }
+        PreferenceGroup(heading = "About") {
+            Text(
+                text = stringResource(id = R.string.about_text),
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 30.dp),
+            )
         }
         PreferenceGroup(heading = stringResource(id = R.string.product)) {
             product.forEach {

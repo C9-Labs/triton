@@ -22,7 +22,6 @@ import static com.android.launcher3.logging.StatsLogManager.LauncherEvent.IGNORE
 import static com.android.launcher3.logging.StatsLogManager.LauncherEvent.LAUNCHER_SETTINGS_BUTTON_TAP_OR_LONGPRESS;
 import static com.android.launcher3.logging.StatsLogManager.LauncherEvent.LAUNCHER_WIDGETSTRAY_BUTTON_TAP_OR_LONGPRESS;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -53,7 +52,6 @@ import com.android.launcher3.shortcuts.DeepShortcutView;
 import com.android.launcher3.testing.TestLogging;
 import com.android.launcher3.testing.TestProtocol;
 import com.android.launcher3.widget.picker.WidgetsFullSheet;
-import com.patrykmichalik.opto.domain.Preference;
 import com.patrykmichalik.opto.core.PreferenceExtensionsKt;
 
 import java.util.ArrayList;
@@ -204,28 +202,28 @@ public class OptionsPopupView extends ArrowPopup<Launcher>
                 IGNORE,
                 OptionsPopupView::startSystemSettings));
         }
+        boolean showStyleWallpapers = Utilities.showStyleWallpapers(launcher);
+        int resString = R.string.styles_wallpaper_button_text;
+        // Replaced R.string.wallpaper_button_text with R.string.styles_wallpaper_button_text
+        int resDrawable = R.drawable.ic_palette;
         options.add(new OptionItem(launcher,
-                R.string.settings_button_text,
-                R.drawable.ic_home_screen,
-                LAUNCHER_SETTINGS_BUTTON_TAP_OR_LONGPRESS,
-                OptionsPopupView::startSettings));
+            resString,
+            resDrawable,
+            IGNORE,
+            OptionsPopupView::startWallpaperPicker));
+
         if (!lockHomeScreen && !WidgetsModel.GO_DISABLE_WIDGETS) {
             options.add(new OptionItem(launcher,
-                    R.string.widget_button_text,
-                    R.drawable.ic_widget,
-                    LAUNCHER_WIDGETSTRAY_BUTTON_TAP_OR_LONGPRESS,
-                    OptionsPopupView::onWidgetsClicked));
+                R.string.widget_button_text,
+                R.drawable.ic_widget,
+                LAUNCHER_WIDGETSTRAY_BUTTON_TAP_OR_LONGPRESS,
+                OptionsPopupView::onWidgetsClicked));
         }
-        boolean showStyleWallpapers = Utilities.showStyleWallpapers(launcher);
-        int resString = showStyleWallpapers ?
-                R.string.styles_wallpaper_button_text : R.string.wallpaper_button_text;
-        int resDrawable = showStyleWallpapers ?
-                R.drawable.ic_palette : R.drawable.ic_wallpaper;
         options.add(new OptionItem(launcher,
-                resString,
-                resDrawable,
-                IGNORE,
-                OptionsPopupView::startWallpaperPicker));
+            R.string.settings_button_text,
+            R.drawable.ic_home_screen,
+            LAUNCHER_SETTINGS_BUTTON_TAP_OR_LONGPRESS,
+            OptionsPopupView::startSettings));
         return options;
     }
 
